@@ -23,12 +23,21 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $token = $user->createToken('token_name')->plainTextToken;
+        $token = $user->createToken('anggit_septiansyah')->plainTextToken;
 
         return response()->json([
             'message' => 'Berhasil login',
             'user' => $user,
             'token' => $token
+        ], 200);
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json([
+            'message' => 'Berhasil logout',
         ], 200);
     }
 }
