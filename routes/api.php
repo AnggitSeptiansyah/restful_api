@@ -29,7 +29,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
   Route::get('/form', [FormController::class, 'index']);
   Route::get('/logout', [AuthController::class, 'logout']);
 
+  // Student
   Route::post('students/create', [StudentController::class, 'create']);
+  Route::get('students/{student}/show', [StudentController::class, 'show']);
+  Route::post('students/{student}', [StudentController::class, 'update']);
+  Route::delete('students/{student}/destroy', [StudentController::class, 'destroy']);
 });
 
 
