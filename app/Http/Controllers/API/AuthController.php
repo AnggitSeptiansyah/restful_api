@@ -18,9 +18,9 @@ class AuthController extends Controller
 
         // Check jika user ada
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json([
-                'message' => 'Email atau password salah'
-            ], 401);
+            throw ValidationException::withMessages([
+                'email' => ['The provided credentials are incorrect.'],
+            ]);
         }
 
         $token = $user->createToken('anggit_septiansyah')->plainTextToken;
