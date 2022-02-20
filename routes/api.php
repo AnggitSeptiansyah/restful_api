@@ -3,7 +3,7 @@
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\FormController;
 use App\Http\Controllers\API\StudentController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\API\SubjectScoreContoller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +34,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
   Route::get('students/{student}/show', [StudentController::class, 'show']);
   Route::post('students/{student}', [StudentController::class, 'update']);
   Route::delete('students/{student}/destroy', [StudentController::class, 'destroy']);
+
+  // Subject
+  Route::post('subject_score/create', [SubjectScoreContoller::class, 'create']);
+  Route::get('subject_score/{subject_score}/show', [SubjectScoreContoller::class, 'show']);
+  Route::post('subject_score/{subject_score}', [SubjectScoreContoller::class, 'update']);
+  Route::delete('subject_score/{subject_score]/destroy', [SubjectScoreContoller::class, 'destroy']);
 });
 
 

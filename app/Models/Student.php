@@ -9,4 +9,9 @@ class Student extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'address', 'phone_number'];
+
+    public function subject_scores()
+    {
+        return $this->hasMany(SubjectScore::class);
+    }
 }

@@ -22,6 +22,8 @@ class StudentController extends Controller
 
     public function show(Student $student)
     {
+        $student = Student::with('subject_scores')->find($student)->first();
+
         return response()->json([
             'message' => 'Data berhasil ditampilkan',
             'student' => $student
